@@ -65,3 +65,5 @@
 @media(max-width:850px){.shipping-card{grid-template-columns:64px 1fr}.shipping-link{grid-column:2}}
 @media(max-width:600px){.shipping-section{padding-bottom:85px}.shipping-card{grid-template-columns:1fr;padding:28px 24px}.shipping-link{grid-column:auto}.shipping-copy h2{font-size:22px}}
 
+.nav-links .nav-diagnostics{display:inline-flex;align-items:center;gap:8px;color:#bff8ff!important}.nav-diagnostics .status-dot{width:6px;height:6px;flex:0 0 auto}.nav-diagnostics:hover{color:var(--cyan)!important}
+
