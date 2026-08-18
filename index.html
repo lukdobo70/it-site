@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260818-2">
+  <link rel="stylesheet" href="styles.css?v=20260818-3">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -48,29 +48,28 @@
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="Panel diagnostyczny serwisu">
+      <div class="hero-visual reveal" aria-label="Bezpłatna diagnostyka komputera">
         <div class="visual-glow"></div>
-        <div class="dashboard-card">
-          <div class="dashboard-top"><span>DIAGNOSTYKA_SYSTEMU</span><span class="online">ONLINE</span></div>
-          <div class="device-shell">
-            <div class="device-screen">
-              <div class="scan-line"></div>
-              <svg viewBox="0 0 260 190" role="img" aria-label="Schemat podzespołów komputera">
-                <rect x="46" y="30" width="168" height="130" rx="12" class="board"/>
-                <rect x="95" y="58" width="70" height="58" rx="6" class="chip"/>
-                <path d="M110 48V30M130 48V30M150 48V30M110 144v16M130 144v16M150 144v16M78 74H46M78 96H46M78 118H46M182 74h32M182 96h32M182 118h32" class="circuit"/>
-                <circle cx="130" cy="87" r="18" class="core"/>
-                <path d="m122 87 6 6 12-14" class="check"/>
-              </svg>
-            </div>
-            <div class="device-base"></div>
+        <a class="diagnostic-cta" href="diagnostyka.html">
+          <div class="diagnostic-top"><span>BEZPŁATNE NARZĘDZIA</span><span class="online"><i></i> ONLINE</span></div>
+          <div class="laptop-icon" aria-hidden="true">
+            <svg viewBox="0 0 320 220">
+              <rect x="55" y="26" width="210" height="142" rx="12" class="laptop-frame"/>
+              <rect x="70" y="42" width="180" height="110" rx="4" class="laptop-screen"/>
+              <path d="M30 177h260l18 14c3 3 1 8-4 8H16c-5 0-7-5-4-8z" class="laptop-base"/>
+              <path d="M142 187h36" class="laptop-detail"/>
+              <circle cx="160" cy="97" r="31" class="test-circle"/>
+              <path d="m148 97 9 9 17-20" class="test-check"/>
+              <path d="M92 65h25M92 76h15M203 119h25M213 130h15" class="screen-lines"/>
+            </svg>
           </div>
-          <div class="metrics">
-            <div><span>STATUS</span><strong>SPRAWNY</strong></div>
-            <div><span>OPTYMALIZACJA</span><strong>98%</strong></div>
+          <div class="diagnostic-copy">
+            <span class="free-badge">ZA DARMO</span>
+            <h2>Sprawdź swój komputer</h2>
+            <p>Przetestuj internet, dźwięk, kamerę, klawiaturę, ekran i podstawową wydajność — bez instalowania programu.</p>
           </div>
-          <div class="progress"><span></span></div>
-        </div>
+          <div class="diagnostic-action"><span>Przejdź do testów</span><strong>↗</strong></div>
+        </a>
       </div>
     </section>
 
@@ -173,7 +172,7 @@
       <a href="#top" class="back-top" aria-label="Wróć na górę">↑</a>
     </div>
   </footer>
-  <script src="script.js?v=20260818-2"></script>
+  <script src="script.js?v=20260818-3"></script>
 </body>
 </html>
 
