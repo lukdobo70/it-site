@@ -65,5 +65,11 @@
 @media(max-width:850px){.shipping-card{grid-template-columns:64px 1fr}.shipping-link{grid-column:2}}
 @media(max-width:600px){.shipping-section{padding-bottom:85px}.shipping-card{grid-template-columns:1fr;padding:28px 24px}.shipping-link{grid-column:auto}.shipping-copy h2{font-size:22px}}
 
-.nav-links .nav-diagnostics{display:inline-flex;align-items:center;gap:8px;color:#bff8ff!important}.nav-diagnostics .status-dot{width:6px;height:6px;flex:0 0 auto}.nav-diagnostics:hover{color:var(--cyan)!important}
+.nav-links .nav-diagnostics{display:inline-flex;align-items:center;gap:9px;min-height:38px;padding:0 14px;border:1px solid rgba(66,232,255,.34);background:rgba(66,232,255,.055);color:#bff8ff!important;font-weight:700;white-space:nowrap}.nav-diagnostics .status-dot{width:6px;height:6px;flex:0 0 auto}.nav-diagnostics:hover{color:#06131b!important;background:var(--cyan);border-color:var(--cyan)}.nav-diagnostics:hover .status-dot{background:#06131b;box-shadow:none}
+
+/* Cyfrowy deszcz w tle */
+.matrix-rain{position:absolute;z-index:0;top:0;left:0;width:100%;height:min(900px,100vh);pointer-events:none;opacity:.27;mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.78) 58%,transparent 100%)}
+main,footer{position:relative;z-index:1}
+@media(max-width:680px){.matrix-rain{opacity:.19}}
+@media(prefers-reduced-motion:reduce){.matrix-rain{display:none}}
 
