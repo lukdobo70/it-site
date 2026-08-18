@@ -1,87 +1,51 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-app.js";
-import { addDoc, collection, getFirestore, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.17.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD19Zoc4lOgeZY5SBHf9zQpZPdk4GV6O5o",
-  authDomain: "it-serwis-opole-lukdobo70.firebaseapp.com",
-  projectId: "it-serwis-opole-lukdobo70",
-  storageBucket: "it-serwis-opole-lukdobo70.firebasestorage.app",
-  messagingSenderId: "40030709547",
-  appId: "1:40030709547:web:e39143edbeac832014876e"
-};
-
-const form = document.querySelector("#service-form");
+const form = document.querySelector('#service-form');
 
 if (form) {
-  const db = getFirestore(initializeApp(firebaseConfig));
-  const message = form.querySelector("#form-message");
-  const submitButton = form.querySelector("button[type='submit']");
-  const submitLabel = form.querySelector(".submit-label");
-  const description = form.elements.description;
-  const descriptionCount = form.querySelector("#description-count");
-  const openedAt = Date.now();
+  const message = form.querySelector('#form-message');
+  const continuation = form.querySelector('#continuation-choice');
+  const contactInput = form.elements.contact;
 
-  description.addEventListener("input", () => {
-    descriptionCount.textContent = description.value.length;
+  form.elements.contactType.addEventListener('change', () => {
+    const email = form.elements.contactType.value === 'email';
+    contactInput.placeholder = email ? 'np. kontakt@example.pl' : 'np. 500 000 000';
+    contactInput.autocomplete = email ? 'email' : 'tel';
   });
 
-  form.addEventListener("submit", async (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
-    message.className = "form-message";
-    message.textContent = "";
+    message.className = 'form-message';
+    message.textContent = '';
 
     if (!form.checkValidity()) {
       form.reportValidity();
-      message.classList.add("error");
-      message.textContent = "Uzupełnij wymagane pola i spróbuj ponownie.";
+      message.classList.add('error');
+      message.textContent = 'Uzupełnij podstawowe dane i wybierz sposób przekazania sprzętu.';
       return;
     }
-
-    if (form.elements.company.value || Date.now() - openedAt < 2500) return;
+    if (form.elements.company.value) return;
 
     const contactType = form.elements.contactType.value;
-    const contact = form.elements.contact.value.trim();
-    const phonePattern = /^[+\d][\d\s()-]{4,}$/;
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const contactIsValid = contactType === "email" ? emailPattern.test(contact) : phonePattern.test(contact);
-
-    if (!contactIsValid) {
-      message.classList.add("error");
-      message.textContent = contactType === "email" ? "Wpisz poprawny adres e-mail." : "Wpisz poprawny numer telefonu.";
-      form.elements.contact.focus();
+    const contact = contactInput.value.trim();
+    const valid = contactType === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) : /^[+\d][\d\s()-]{4,}$/.test(contact);
+    if (!valid) {
+      message.classList.add('error');
+      message.textContent = contactType === 'email' ? 'Wpisz poprawny adres e-mail.' : 'Wpisz poprawny numer telefonu.';
+      contactInput.focus();
       return;
     }
 
-    submitButton.disabled = true;
-    submitLabel.textContent = "Wysyłanie...";
-
-    try {
-      await addDoc(collection(db, "zgloszenia"), {
-        name: form.elements.name.value.trim(),
-        contact,
-        contactType,
-        device: form.elements.device.value,
-        serviceType: form.elements.serviceType.value,
-        description: description.value.trim(),
-        preferredContact: form.elements.preferredContact.value,
-        createdAt: serverTimestamp(),
-        status: "nowe",
-        source: "strona-www",
-        consent: form.elements.consent.checked
-      });
-
-      form.reset();
-      descriptionCount.textContent = "0";
-      message.classList.add("success");
-      message.textContent = "Zgłoszenie wysłane. Skontaktujemy się z Tobą możliwie szybko.";
-    } catch (error) {
-      console.error("Nie udało się wysłać zgłoszenia:", error);
-      message.classList.add("error");
-      message.textContent = "Nie udało się wysłać zgłoszenia. Spróbuj ponownie lub napisz przez OLX.";
-    } finally {
-      submitButton.disabled = false;
-      submitLabel.textContent = "Wyślij zgłoszenie";
-    }
+    sessionStorage.setItem('itServiceDraft', JSON.stringify({
+      name: form.elements.name.value.trim(),
+      contact,
+      contactType,
+      device: form.elements.device.value,
+      serviceType: form.elements.serviceType.value,
+      deliveryMethod: form.elements.deliveryMethod.value
+    }));
+    continuation.hidden = false;
+    form.querySelector('.form-grid').classList.add('form-complete');
+    form.querySelector('.form-submit').hidden = true;
+    continuation.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 }
 

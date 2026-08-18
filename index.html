@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260819-5">
+  <link rel="stylesheet" href="styles.css?v=20260819-6">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -156,20 +156,6 @@
       </div>
     </section>
 
-    <section class="shipping-section">
-      <div class="container shipping-card reveal">
-        <div class="shipping-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5zM4 7.5l8 4.5 8-4.5M12 12v9M8 5.2l8 4.6"/></svg>
-        </div>
-        <div class="shipping-copy">
-          <span class="kicker">SERWIS WYSYŁKOWY</span>
-          <h2>Nie jesteś z okolicy? Wyślij sprzęt Paczkomatem.</h2>
-          <p>Po wcześniejszym ustaleniu szczegółów możesz nadać wadliwy sprzęt Paczkomatem na własny koszt. Zdiagnozujemy i naprawimy urządzenie po akceptacji zakresu prac, a następnie bezpiecznie odeślemy je pod wskazany adres lub do wybranego Paczkomatu.</p>
-        </div>
-        <a class="button shipping-link" href="wysylka.html">Otwórz kreator <span>↗</span></a>
-      </div>
-    </section>
-
     <section class="section container faq-section" id="faq">
       <div class="section-heading reveal">
         <div><span class="kicker">04 / FAQ</span><h2>Najczęstsze<br><span>pytania.</span></h2></div>
@@ -191,8 +177,8 @@
       <div class="container contact-layout">
         <div class="contact-inner reveal">
           <span class="kicker">UMÓW SIĘ NA DIAGNOZĘ</span>
-          <h2>Opisz problem.<br><span>Oddzwonimy z rozwiązaniem.</span></h2>
-          <p>Wyślij krótkie zgłoszenie. Skontaktujemy się, dopytamy o szczegóły i ustalimy dogodny termin — bez zobowiązań.</p>
+          <h2>Wybierz sposób<br><span>przekazania sprzętu.</span></h2>
+          <p>Najpierw podaj podstawowe informacje. Potem możesz zadzwonić bezpośrednio albo przygotować kompletne zgłoszenie online.</p>
           <div class="contact-points">
             <span><i>✓</i> Opole i okolice</span>
             <span><i>✓</i> Dojazd, pomoc zdalna lub wysyłka Paczkomatem</span>
@@ -202,21 +188,20 @@
         </div>
 
         <form class="service-form reveal" id="service-form" novalidate>
-          <div class="form-heading"><span>ZGŁOSZENIE SERWISOWE</span><strong>01</strong></div>
+          <div class="form-heading"><span>PODSTAWOWE INFORMACJE</span><strong>01</strong></div>
           <div class="form-grid">
             <label class="field"><span>Imię i nazwisko *</span><input type="text" name="name" autocomplete="name" minlength="2" maxlength="80" required placeholder="Jan Kowalski"></label>
             <label class="field"><span>Preferowany kontakt *</span><select name="contactType" required><option value="telefon">Telefon</option><option value="email">E-mail</option></select></label>
             <label class="field form-wide"><span>Numer telefonu lub e-mail *</span><input type="text" name="contact" autocomplete="tel" minlength="5" maxlength="160" required placeholder="np. 500 000 000"></label>
-            <label class="field"><span>Urządzenie / temat *</span><select name="device" required><option value="">Wybierz</option><option>Laptop</option><option>Komputer stacjonarny</option><option>Sieć / Wi-Fi</option><option>Strona WWW</option><option>Inne</option></select></label>
+            <label class="field"><span>Urządzenie / temat *</span><select name="device" required><option value="">Wybierz</option><option>Laptop</option><option>Komputer stacjonarny</option><option>Monitor</option><option>Konsola</option><option>Sieć / Wi-Fi</option><option>Strona WWW</option><option>Inne</option></select></label>
             <label class="field"><span>Rodzaj pomocy *</span><select name="serviceType" required><option value="">Wybierz</option><option>Diagnoza lub naprawa</option><option>Czyszczenie i konserwacja</option><option>Modernizacja sprzętu</option><option>System lub dane</option><option>Sieć i Wi-Fi</option><option>Pomoc zdalna</option><option>Strona WWW</option><option>Inne</option></select></label>
-            <label class="field form-wide"><span>Co się dzieje? *</span><textarea name="description" minlength="10" maxlength="2000" required placeholder="Opisz objawy, od kiedy występują i czego już próbowano..."></textarea><small><b id="description-count">0</b>/2000</small></label>
-            <label class="field form-wide"><span>Kiedy możemy się skontaktować?</span><select name="preferredContact"><option>Jak najszybciej</option><option>Rano (8:00–12:00)</option><option>Po południu (12:00–17:00)</option><option>Wieczorem (17:00–20:00)</option></select></label>
+            <fieldset class="delivery-choice form-wide"><legend>Jak chcesz przekazać sprzęt? *</legend><label><input type="radio" name="deliveryMethod" value="odbior" required><span><b>Odbiór w Opolu lub okolicy</b><small>Ustalimy miejsce i termin odbioru sprzętu.</small></span></label><label><input type="radio" name="deliveryMethod" value="paczkomat" required><span><b>Wyślę samodzielnie Paczkomatem</b><small>Po zgłoszeniu otrzymasz instrukcję i dane do nadania.</small></span></label></fieldset>
           </div>
-          <label class="consent"><input type="checkbox" name="consent" required><span>Zgadzam się na wykorzystanie podanych danych wyłącznie w celu obsługi tego zgłoszenia. *</span></label>
           <label class="form-trap" aria-hidden="true">Firma<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
-          <button class="button form-submit" type="submit"><span class="submit-label">Wyślij zgłoszenie</span><span class="submit-arrow">↗</span></button>
+          <button class="button form-submit" type="submit"><span class="submit-label">Przejdź dalej</span><span class="submit-arrow">→</span></button>
           <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
-          <p class="form-privacy">Dane trafiają do zabezpieczonej bazy Firebase. Nie są publicznie widoczne ani udostępniane innym użytkownikom.</p>
+          <div class="continuation-choice" id="continuation-choice" hidden><span class="kicker">JAK CHCESZ KONTYNUOWAĆ?</span><a class="phone-choice" href="tel:+48797118603"><b>Zadzwoń: 797 118 603</b><small>Ustalimy wszystko podczas rozmowy</small></a><a class="online-choice button" href="wysylka.html">Utwórz pełne zgłoszenie online <span>↗</span></a></div>
+          <p class="form-privacy">Na tym etapie dane pozostają wyłącznie w Twojej przeglądarce. Zostaną zapisane dopiero po utworzeniu pełnego zgłoszenia online.</p>
         </form>
       </div>
     </section>
@@ -229,8 +214,8 @@
       <a href="#top" class="back-top" aria-label="Wróć na górę">↑</a>
     </div>
   </footer>
-  <script src="script.js?v=20260819-5"></script>
-  <script type="module" src="firebase-form.js?v=20260819-2"></script>
+  <script src="script.js?v=20260819-6"></script>
+  <script type="module" src="firebase-form.js?v=20260819-3"></script>
 </body>
 </html>
 

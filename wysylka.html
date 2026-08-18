@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Zgłoś wysyłkę sprzętu komputerowego do naprawy Paczkomatem i sprawdzaj status realizacji.">
   <meta name="theme-color" content="#05080d">
-  <title>Kreator wysyłki Paczkomatem — IT Serwis Opole</title>
+  <title>Pełne zgłoszenie online — IT Serwis Opole</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260819-5">
+  <link rel="stylesheet" href="styles.css?v=20260819-6">
 </head>
 <body class="shipping-page">
   <div class="noise" aria-hidden="true"></div>
@@ -17,14 +17,14 @@
 
   <main class="shipping-main container">
     <section class="shipping-intro reveal visible">
-      <div class="eyebrow"><span class="status-dot"></span> Serwis wysyłkowy</div>
-      <h1>Wyślij sprzęt.<br><span>Śledź naprawę online.</span></h1>
-      <p>Najpierw utwórz zgłoszenie. Po jego wysłaniu skontaktujemy się z Tobą i przekażemy dane Paczkomatu docelowego — nie nadawaj paczki przed potwierdzeniem.</p>
+      <div class="eyebrow"><span class="status-dot"></span> Pełne zgłoszenie online</div>
+      <h1>Opisz usterkę.<br><span>Dodaj dokładne zdjęcia.</span></h1>
+      <p>Dane podstawowe zostały przeniesione z formularza. Uzupełnij szczegóły i zdjęcia całego sprzętu oraz widocznych uszkodzeń. Instrukcja Paczkomatu pojawi się tylko wtedy, gdy wybrano wysyłkę.</p>
     </section>
 
     <div class="wizard-shell">
       <nav class="wizard-progress" aria-label="Etapy zgłoszenia">
-        <button class="active" data-step-nav="1"><b>01</b><span>Sprzęt</span></button>
+        <button class="active" data-step-nav="1"><b>01</b><span>Usterka</span></button>
         <button data-step-nav="2"><b>02</b><span>Zdjęcia</span></button>
         <button data-step-nav="3"><b>03</b><span>Pakowanie</span></button>
         <button data-step-nav="4"><b>04</b><span>Paczkomat</span></button>
@@ -33,26 +33,28 @@
 
       <form id="shipping-form" class="wizard-form" novalidate>
         <section class="wizard-step active" data-step="1">
-          <div class="wizard-heading"><span class="kicker">KROK 01</span><h2>Opisz sprzęt i usterkę</h2><p>Podaj dane potrzebne do wstępnego rozpoznania zgłoszenia.</p></div>
+          <div class="wizard-heading"><span class="kicker">KROK 01</span><h2>Dokładnie opisz sprzęt i usterkę</h2><p>Im więcej szczegółów podasz, tym sprawniej ocenimy problem.</p></div>
+          <div class="selected-delivery" id="selected-delivery">Wybrany sposób przekazania: <strong>—</strong></div>
+          <input type="hidden" name="deliveryMethod">
           <div class="form-grid">
             <label class="field"><span>Imię i nazwisko *</span><input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Jan Kowalski"></label>
             <label class="field"><span>Telefon lub e-mail *</span><input name="contact" required minlength="5" maxlength="160" placeholder="500 000 000 lub e-mail"></label>
             <label class="field"><span>Rodzaj sprzętu *</span><select name="device" required><option value="">Wybierz</option><option>Laptop</option><option>Komputer stacjonarny</option><option>Monitor</option><option>Konsola</option><option>Inne</option></select></label>
             <label class="field"><span>Marka i model</span><input name="model" maxlength="120" placeholder="np. Lenovo Legion 5"></label>
-            <label class="field form-wide"><span>Opis usterki *</span><textarea name="description" required minlength="10" maxlength="2000" placeholder="Co się dzieje, od kiedy i czego już próbowano?"></textarea></label>
+            <label class="field form-wide"><span>Dokładny opis usterki *</span><textarea name="description" required minlength="30" maxlength="3000" placeholder="Opisz wszystkie objawy, widoczne uszkodzenia, kiedy problem się pojawił i czego już próbowano."></textarea></label>
           </div>
           <div class="wizard-actions"><span></span><button type="button" class="button wizard-next">Dalej: zdjęcia <span>→</span></button></div>
         </section>
 
         <section class="wizard-step" data-step="2">
-          <div class="wizard-heading"><span class="kicker">KROK 02</span><h2>Dodaj zdjęcia sprzętu</h2><p>Maksymalnie 3 zdjęcia. Pokaż urządzenie, tabliczkę z modelem oraz widoczne uszkodzenie. Zdjęcia zostaną zmniejszone przed wysłaniem.</p></div>
-          <label class="photo-drop" for="device-photos"><span class="photo-plus">+</span><strong>Wybierz zdjęcia</strong><small>JPG, PNG lub WEBP • maks. 3 pliki</small></label>
+          <div class="wizard-heading"><span class="kicker">KROK 02</span><h2>Dodaj komplet zdjęć sprzętu</h2><p>Dodaj od 2 do 5 zdjęć: cały sprzęt z kilku stron, tabliczkę z modelem oraz dokładne zbliżenia każdej widocznej usterki. Zdjęcia zostaną zmniejszone przed wysłaniem.</p></div>
+          <label class="photo-drop" for="device-photos"><span class="photo-plus">+</span><strong>Wybierz zdjęcia</strong><small>JPG, PNG lub WEBP • wymagane 2–5 plików</small></label>
           <input id="device-photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
           <div class="photo-previews" id="photo-previews"></div>
           <div class="wizard-actions"><button type="button" class="mini-button wizard-back">← Wstecz</button><button type="button" class="button wizard-next">Dalej: pakowanie <span>→</span></button></div>
         </section>
 
-        <section class="wizard-step" data-step="3">
+        <section class="wizard-step packing-step" data-step="3">
           <div class="wizard-heading"><span class="kicker">KROK 03</span><h2>Przygotuj bezpieczną paczkę</h2><p>Zaznacz każdy punkt po przygotowaniu sprzętu. Nie wkładaj do paczki haseł ani niepotrzebnych akcesoriów.</p></div>
           <div class="packing-list">
             <label><input type="checkbox" name="packDevice"><span><b>Wyłącz i odłącz sprzęt</b><small>Wyjmij płyty, karty pamięci i luźne elementy.</small></span></label>
@@ -65,13 +67,17 @@
         </section>
 
         <section class="wizard-step" data-step="4">
-          <div class="wizard-heading"><span class="kicker">KROK 04</span><h2>Ustal nadanie i zwrot</h2><p>Podaj Paczkomat, z którego planujesz nadać przesyłkę. Dane Paczkomatu odbiorczego otrzymasz po potwierdzeniu zgłoszenia.</p></div>
-          <div class="form-grid">
-            <label class="field form-wide"><span>Twój Paczkomat nadawczy *</span><input name="parcelLocker" required minlength="3" maxlength="80" placeholder="np. OPO01A, ul. Przykładowa 1, Opole"></label>
-            <label class="field"><span>Preferowany zwrot *</span><select name="returnMethod" required><option value="">Wybierz</option><option>Paczkomat</option><option>Kurier na adres</option><option>Odbiór osobisty</option></select></label>
-            <label class="field"><span>Najlepsza pora kontaktu</span><select name="contactTime"><option>Jak najszybciej</option><option>8:00–12:00</option><option>12:00–17:00</option><option>17:00–20:00</option></select></label>
+          <div class="wizard-heading"><span class="kicker">KROK 04</span><h2 id="handover-title">Ustal przekazanie sprzętu</h2><p id="handover-description">Uzupełnij informacje potrzebne do odbioru lub wysyłki.</p></div>
+          <div class="form-grid shipping-fields" id="shipping-fields">
+            <label class="field form-wide"><span>Twój Paczkomat nadawczy *</span><input name="parcelLocker" minlength="3" maxlength="80" placeholder="np. OPO01A, ul. Przykładowa 1, Opole"></label>
+            <label class="field"><span>Preferowany zwrot *</span><select name="returnMethod"><option value="">Wybierz</option><option>Paczkomat</option><option>Kurier na adres</option><option>Odbiór osobisty</option></select></label>
           </div>
-          <label class="consent"><input type="checkbox" name="shippingConsent" required><span>Akceptuję, że wysyłka do serwisu odbywa się na mój koszt, a sposób i koszt przesyłki zwrotnej zostaną ustalone przed rozpoczęciem naprawy. *</span></label>
+          <div class="form-grid pickup-fields" id="pickup-fields" hidden>
+            <label class="field form-wide"><span>Adres odbioru sprzętu *</span><input name="pickupAddress" minlength="5" maxlength="180" placeholder="Ulica, numer domu lub mieszkania"></label>
+            <label class="field"><span>Miejscowość *</span><input name="pickupCity" minlength="2" maxlength="80" placeholder="Opole lub okolice"></label>
+          </div>
+          <div class="form-grid"><label class="field form-wide"><span>Najlepsza pora kontaktu</span><select name="contactTime"><option>Jak najszybciej</option><option>8:00–12:00</option><option>12:00–17:00</option><option>17:00–20:00</option></select></label></div>
+          <label class="consent shipping-consent"><input type="checkbox" name="shippingConsent"><span>Akceptuję, że wysyłka do serwisu odbywa się na mój koszt, a sposób i koszt przesyłki zwrotnej zostaną ustalone przed rozpoczęciem naprawy. *</span></label>
           <label class="consent"><input type="checkbox" name="dataConsent" required><span>Zgadzam się na wykorzystanie podanych danych i zdjęć wyłącznie do obsługi zgłoszenia. *</span></label>
           <div class="wizard-actions"><button type="button" class="mini-button wizard-back">← Wstecz</button><button type="submit" class="button" id="create-shipping"><span class="submit-label">Utwórz zgłoszenie</span><span>↗</span></button></div>
           <div class="form-message" id="shipping-message" role="status" aria-live="polite"></div>
@@ -92,7 +98,7 @@
     </section>
   </main>
   <footer><div class="container footer-inner"><a class="brand" href="index.html"><span class="brand-mark"><span></span></span><span>IT<span class="accent">/</span>SERWIS</span></a><p>Serwis wysyłkowy • Paczkomat po wcześniejszym ustaleniu</p><a href="#top" class="back-top">↑</a></div></footer>
-  <script type="module" src="wysylka.js?v=20260819-1"></script>
+  <script type="module" src="wysylka.js?v=20260819-2"></script>
 </body>
 </html>
 
