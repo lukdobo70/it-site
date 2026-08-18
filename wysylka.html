@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zgłoś wysyłkę sprzętu komputerowego do naprawy Paczkomatem i sprawdzaj status realizacji.">
+  <meta name="theme-color" content="#05080d">
+  <title>Kreator wysyłki Paczkomatem — IT Serwis Opole</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260819-5">
+</head>
+<body class="shipping-page">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header scrolled"><nav class="nav container"><a class="brand" href="index.html"><span class="brand-mark"><span></span></span><span>IT<span class="accent">/</span>SERWIS</span></a><span class="diag-safe">● BEZPIECZNE ZGŁOSZENIE</span><a class="back-home" href="index.html">← Wróć na stronę</a></nav></header>
+
+  <main class="shipping-main container">
+    <section class="shipping-intro reveal visible">
+      <div class="eyebrow"><span class="status-dot"></span> Serwis wysyłkowy</div>
+      <h1>Wyślij sprzęt.<br><span>Śledź naprawę online.</span></h1>
+      <p>Najpierw utwórz zgłoszenie. Po jego wysłaniu skontaktujemy się z Tobą i przekażemy dane Paczkomatu docelowego — nie nadawaj paczki przed potwierdzeniem.</p>
+    </section>
+
+    <div class="wizard-shell">
+      <nav class="wizard-progress" aria-label="Etapy zgłoszenia">
+        <button class="active" data-step-nav="1"><b>01</b><span>Sprzęt</span></button>
+        <button data-step-nav="2"><b>02</b><span>Zdjęcia</span></button>
+        <button data-step-nav="3"><b>03</b><span>Pakowanie</span></button>
+        <button data-step-nav="4"><b>04</b><span>Paczkomat</span></button>
+        <button data-step-nav="5"><b>05</b><span>Status</span></button>
+      </nav>
+
+      <form id="shipping-form" class="wizard-form" novalidate>
+        <section class="wizard-step active" data-step="1">
+          <div class="wizard-heading"><span class="kicker">KROK 01</span><h2>Opisz sprzęt i usterkę</h2><p>Podaj dane potrzebne do wstępnego rozpoznania zgłoszenia.</p></div>
+          <div class="form-grid">
+            <label class="field"><span>Imię i nazwisko *</span><input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Jan Kowalski"></label>
+            <label class="field"><span>Telefon lub e-mail *</span><input name="contact" required minlength="5" maxlength="160" placeholder="500 000 000 lub e-mail"></label>
+            <label class="field"><span>Rodzaj sprzętu *</span><select name="device" required><option value="">Wybierz</option><option>Laptop</option><option>Komputer stacjonarny</option><option>Monitor</option><option>Konsola</option><option>Inne</option></select></label>
+            <label class="field"><span>Marka i model</span><input name="model" maxlength="120" placeholder="np. Lenovo Legion 5"></label>
+            <label class="field form-wide"><span>Opis usterki *</span><textarea name="description" required minlength="10" maxlength="2000" placeholder="Co się dzieje, od kiedy i czego już próbowano?"></textarea></label>
+          </div>
+          <div class="wizard-actions"><span></span><button type="button" class="button wizard-next">Dalej: zdjęcia <span>→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="2">
+          <div class="wizard-heading"><span class="kicker">KROK 02</span><h2>Dodaj zdjęcia sprzętu</h2><p>Maksymalnie 3 zdjęcia. Pokaż urządzenie, tabliczkę z modelem oraz widoczne uszkodzenie. Zdjęcia zostaną zmniejszone przed wysłaniem.</p></div>
+          <label class="photo-drop" for="device-photos"><span class="photo-plus">+</span><strong>Wybierz zdjęcia</strong><small>JPG, PNG lub WEBP • maks. 3 pliki</small></label>
+          <input id="device-photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+          <div class="photo-previews" id="photo-previews"></div>
+          <div class="wizard-actions"><button type="button" class="mini-button wizard-back">← Wstecz</button><button type="button" class="button wizard-next">Dalej: pakowanie <span>→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="3">
+          <div class="wizard-heading"><span class="kicker">KROK 03</span><h2>Przygotuj bezpieczną paczkę</h2><p>Zaznacz każdy punkt po przygotowaniu sprzętu. Nie wkładaj do paczki haseł ani niepotrzebnych akcesoriów.</p></div>
+          <div class="packing-list">
+            <label><input type="checkbox" name="packDevice"><span><b>Wyłącz i odłącz sprzęt</b><small>Wyjmij płyty, karty pamięci i luźne elementy.</small></span></label>
+            <label><input type="checkbox" name="packWrap"><span><b>Owiń urządzenie kilkoma warstwami</b><small>Najlepiej folią bąbelkową; osobno zabezpiecz zasilacz.</small></span></label>
+            <label><input type="checkbox" name="packBox"><span><b>Użyj sztywnego kartonu</b><small>Wypełnij wolne przestrzenie, aby sprzęt nie przesuwał się w środku.</small></span></label>
+            <label><input type="checkbox" name="packLabel"><span><b>Usuń stare etykiety i zaklej paczkę</b><small>Zrób zdjęcie zamkniętej przesyłki przed nadaniem.</small></span></label>
+          </div>
+          <div class="packing-warning"><strong>WAŻNE</strong><p>Nie wysyłaj sprzętu przed otrzymaniem potwierdzenia i danych Paczkomatu docelowego.</p></div>
+          <div class="wizard-actions"><button type="button" class="mini-button wizard-back">← Wstecz</button><button type="button" class="button wizard-next">Dalej: Paczkomat <span>→</span></button></div>
+        </section>
+
+        <section class="wizard-step" data-step="4">
+          <div class="wizard-heading"><span class="kicker">KROK 04</span><h2>Ustal nadanie i zwrot</h2><p>Podaj Paczkomat, z którego planujesz nadać przesyłkę. Dane Paczkomatu odbiorczego otrzymasz po potwierdzeniu zgłoszenia.</p></div>
+          <div class="form-grid">
+            <label class="field form-wide"><span>Twój Paczkomat nadawczy *</span><input name="parcelLocker" required minlength="3" maxlength="80" placeholder="np. OPO01A, ul. Przykładowa 1, Opole"></label>
+            <label class="field"><span>Preferowany zwrot *</span><select name="returnMethod" required><option value="">Wybierz</option><option>Paczkomat</option><option>Kurier na adres</option><option>Odbiór osobisty</option></select></label>
+            <label class="field"><span>Najlepsza pora kontaktu</span><select name="contactTime"><option>Jak najszybciej</option><option>8:00–12:00</option><option>12:00–17:00</option><option>17:00–20:00</option></select></label>
+          </div>
+          <label class="consent"><input type="checkbox" name="shippingConsent" required><span>Akceptuję, że wysyłka do serwisu odbywa się na mój koszt, a sposób i koszt przesyłki zwrotnej zostaną ustalone przed rozpoczęciem naprawy. *</span></label>
+          <label class="consent"><input type="checkbox" name="dataConsent" required><span>Zgadzam się na wykorzystanie podanych danych i zdjęć wyłącznie do obsługi zgłoszenia. *</span></label>
+          <div class="wizard-actions"><button type="button" class="mini-button wizard-back">← Wstecz</button><button type="submit" class="button" id="create-shipping"><span class="submit-label">Utwórz zgłoszenie</span><span>↗</span></button></div>
+          <div class="form-message" id="shipping-message" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="wizard-step" data-step="5">
+          <div class="wizard-heading"><span class="kicker">KROK 05</span><h2>Zgłoszenie gotowe</h2><p>Zapisz kod — będzie potrzebny do sprawdzania postępu naprawy.</p></div>
+          <div class="tracking-ticket"><span>TWÓJ KOD ZGŁOSZENIA</span><strong id="created-code">—</strong><button type="button" class="mini-button" id="copy-code">Kopiuj kod</button></div>
+          <div class="next-steps"><article><b>01</b><span><strong>Poczekaj na kontakt</strong><small>Potwierdzimy przyjęcie i podamy Paczkomat docelowy.</small></span></article><article><b>02</b><span><strong>Nadaj zabezpieczoną paczkę</strong><small>Zachowaj potwierdzenie i numer przesyłki.</small></span></article><article><b>03</b><span><strong>Sprawdzaj status</strong><small>Wpisz kod w polu poniżej.</small></span></article></div>
+        </section>
+      </form>
+    </div>
+
+    <section class="status-check" id="sprawdz-status">
+      <div><span class="kicker">STATUS NAPRAWY</span><h2>Masz już kod zgłoszenia?</h2><p>Wpisz go dokładnie w takiej formie, w jakiej został wygenerowany.</p></div>
+      <form id="status-form"><label class="field"><span>Kod zgłoszenia</span><input name="trackingCode" required placeholder="IT-XXXX-XXXX-XXXX-XXXX"></label><button class="button" type="submit">Sprawdź <span>→</span></button></form>
+      <div class="status-result" id="status-result" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><a class="brand" href="index.html"><span class="brand-mark"><span></span></span><span>IT<span class="accent">/</span>SERWIS</span></a><p>Serwis wysyłkowy • Paczkomat po wcześniejszym ustaleniu</p><a href="#top" class="back-top">↑</a></div></footer>
+  <script type="module" src="wysylka.js?v=20260819-1"></script>
+</body>
+</html>
+
