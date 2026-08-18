@@ -4,3 +4,19 @@
 @media (max-width:680px){.container{width:min(100% - 32px,1160px)}.nav{height:68px}.menu-toggle{display:block;z-index:2}.menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}.menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}.nav-links{position:fixed;inset:0;background:rgba(5,8,13,.98);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:50px;gap:26px;transform:translateX(100%);transition:.35s}.nav-links.open{transform:none}.nav-links>a:not(.button){font:600 27px var(--font-display)}.hero{min-height:auto;padding-top:120px;padding-bottom:70px;gap:30px}.hero-lead{font-size:16px}.hero-actions{align-items:flex-start;flex-direction:column}.trust-row{gap:17px;justify-content:space-between}.trust-row strong{font-size:12px}.trust-row span{font-size:10px}.hero-visual{height:390px}.dashboard-card{transform:none;padding:16px}.device-screen svg{height:160px}.floating-tag{font-size:10px}.tag-one{right:-4px}.tag-two{left:-4px}.section{padding-top:90px;padding-bottom:90px}.services-grid,.process-grid{grid-template-columns:1fr}.service-card{min-height:280px}.section-heading{margin-bottom:40px}.split-layout{gap:40px}.contact-section{padding:90px 0}.footer-inner{gap:22px}.footer-inner p{display:none}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.marquee-track,.scan-line,.floating-tag,.visual-glow{animation:none}}
 
+/* Uporządkowany panel i równy układ usług */
+.hero-visual{overflow:visible}
+.dashboard-card{transform:none;width:min(100%,460px)}
+.dashboard-card:hover{transform:translateY(-4px)}
+.services-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+.service-card,.service-card.featured,.service-card.web-card{grid-row:auto;min-height:285px;padding:32px 34px;background:linear-gradient(145deg,rgba(13,23,34,.92),rgba(8,14,22,.96))}
+.service-card:hover{transform:translateY(-5px)}
+.icon-wrap{margin-bottom:30px}
+.service-no{right:28px;top:28px}
+.service-card h3{font-size:22px;margin-bottom:10px}
+.service-card p{max-width:500px;margin-bottom:24px}
+.service-tags{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1}
+.service-tags span{padding:6px 10px;border:1px solid rgba(120,164,194,.17);background:rgba(255,255,255,.025);color:#9db0c0;font-size:11px;line-height:1;letter-spacing:.02em}
+
+@media (max-width:680px){.services-grid{grid-template-columns:1fr}.service-card,.service-card.featured,.service-card.web-card{min-height:auto;padding:27px}.dashboard-card{width:100%}}
+
